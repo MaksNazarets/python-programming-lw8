@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>All Tables</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+  <div class="wrapper">
+    <h1>Магазин одягу</h1>
+    <h2 class="name">Назарець Максим. КН-20002б</h2>
+
+
+
+    <h2>Warehouses</h2>
+    <table>
+      <tr>
+        <th>Address</th>
+        <th>Warehouse Manager</th>
+        <th>Phone</th>
+      </tr>
+      {% for warehouse in warehouses %}
+      <tr>
+        <td>{{ warehouse.address }}</td>
+        <td>{{ warehouse.warehouse_manager }}</td>
+        <td>{{ warehouse.phone }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Products</h2>
+    <table>
+      <tr>
+        <th>Type</th>
+        <th>Clothing Name</th>
+        <th>Manufacturer</th>
+        <th>Warehouse</th>
+        <th>Quantity in Stock</th>
+        <th>Price</th>
+      </tr>
+      {% for product in products %}
+      <tr>
+        <td>{{ product.type }}</td>
+        <td>{{ product.clothing_name }}</td>
+        <td>{{ product.manufacturer }}</td>
+        <td>{{ product.warehouse.address }}</td>
+        <td>{{ product.quantity_in_stock }}</td>
+        <td>{{ product.price }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Clients</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+      </tr>
+      {% for client in clients %}
+      <tr>
+        <td>{{ client.client_name }}</td>
+        <td>{{ client.client_address }}</td>
+        <td>{{ client.client_phone }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h2>Sales</h2>
+    <table>
+      <tr>
+        <th>Date</th>
+        <th>Client</th>
+        <th>Product</th>
+        <th>Quantity purchased</th>
+        <th>Discount</th>
+      </tr>
+      {% for sale in sales %}
+      <tr>
+        <td>{{ sale.sale_date }}</td>
+        <td>{{ sale.client.client_name }}</td>
+        <td>{{ sale.product.clothing_name }}</td>
+        <td>{{ sale.quantity_purchased }}</td>
+        <td>{{ sale.discount }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</body>
+
+</html>
